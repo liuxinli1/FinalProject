@@ -31,6 +31,9 @@ div.banner {
   padding-top: 5%;
   padding-bottom: 5%;
 }
+div.canvas_area {
+  background-color: white;
+}
 
 .home_new_list_button {
   font-size: 32pt;

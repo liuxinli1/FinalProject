@@ -9,6 +9,7 @@ import HomeScreen from './components/home_screen/HomeScreen.js';
 import RegisterScreen from './components/register_screen/RegisterScreen.js';
 import LoginScreen from './components/login_screen/LoginScreen.js';
 import DatabaseTester from './test/DatabaseTester.js';
+import EditScreen from './components/edit_screen/EditScreen.js';
 
 class App extends Component {
   
@@ -24,6 +25,7 @@ class App extends Component {
               <Route exact path="/register" component={RegisterScreen} />
               <Route exact path="/login" component={LoginScreen} />
               <Route exact path="/database" component={DatabaseTester} />
+              <Route exact path="/item/:id" component={EditScreen} />
             </Switch>
           </div>
         </BrowserRouter>

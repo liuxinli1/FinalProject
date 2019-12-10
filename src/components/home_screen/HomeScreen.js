@@ -5,6 +5,7 @@ import { NavLink, Redirect } from 'react-router-dom';
 import { firestoreConnect } from 'react-redux-firebase';
 import { getFirestore } from 'redux-firestore';
 import { firestore } from 'firebase';
+import ItemLinks from './ItemLinks.js';
 
 class HomeScreen extends Component {
     state = {
@@ -14,9 +15,9 @@ class HomeScreen extends Component {
     handleNewList = (e) =>{
         const fireStore = getFirestore();
         const id = Math.random().toString(36).substr(2, 10) + Math.random().toString(36).substr(2, 10);
-        fireStore.collection("todoLists").doc(id).set({
+        fireStore.collection("canvasList").doc(id).set({
             itemName: "",
-            owner: this.props.auth.uid,
+            owner: this.props.auth.email,
             canvas: [],
             id: id,
         });
@@ -39,7 +40,7 @@ class HomeScreen extends Component {
             <div className="dashboard container">
                 <div className="row">
                     <div className="col s12 m4">
-                        {/* <TodoListLinks /> */}
+                        <ItemLinks />
                     </div>
 
                     <div className="col s8">
@@ -62,13 +63,13 @@ class HomeScreen extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
     };
 };
 
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-      { collection: 'canvasList', orderBy: ['name']},
+      { collection: 'canvasList', orderBy: ['itemName']},
     ]),
 )(HomeScreen);
