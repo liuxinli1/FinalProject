@@ -6,6 +6,9 @@ import { firebaseConnect } from 'react-redux-firebase';
 
 import Navbar from './components/navbar/Navbar.js';
 import HomeScreen from './components/home_screen/HomeScreen.js';
+import RegisterScreen from './components/register_screen/RegisterScreen.js';
+import LoginScreen from './components/login_screen/LoginScreen.js';
+import DatabaseTester from './test/DatabaseTester.js';
 
 class App extends Component {
   
@@ -18,6 +21,9 @@ class App extends Component {
             <Navbar />
             <Switch>
               <Route exact path="/" component={HomeScreen} />
+              <Route exact path="/register" component={RegisterScreen} />
+              <Route exact path="/login" component={LoginScreen} />
+              <Route exact path="/database" component={DatabaseTester} />
             </Switch>
           </div>
         </BrowserRouter>

@@ -15,10 +15,10 @@ class HomeScreen extends Component {
         const fireStore = getFirestore();
         const id = Math.random().toString(36).substr(2, 10) + Math.random().toString(36).substr(2, 10);
         fireStore.collection("todoLists").doc(id).set({
-            key: id,
-            item: [],
-            name: null,
-            owner: null
+            itemName: "",
+            owner: this.props.auth.uid,
+            canvas: [],
+            id: id,
         });
         // this.redirectLink = "/todoList/"+id;
         // this.setState({redirect: true});
@@ -44,13 +44,13 @@ class HomeScreen extends Component {
 
                     <div className="col s8">
                         <div className="banner">
-                            wireframer<br />
-                            List Maker
+                            Wireframer<br />
+                            Canvas Maker
                         </div>
                         
                         <div className="home_new_list_container">
                                 <button className="home_new_list_button" onClick={this.handleNewList}>
-                                    Create a New To Do List
+                                    Create a New Canvas
                                 </button>
                         </div>
                     </div>
@@ -69,6 +69,6 @@ const mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-      { collection: 'todoLists', orderBy: ['name']},
+      { collection: 'canvasList', orderBy: ['name']},
     ]),
 )(HomeScreen);

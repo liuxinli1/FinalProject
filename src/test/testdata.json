@@ -1,0 +1,90 @@
+{
+	"itemList" :[
+		{
+			"itemName" : "TestFrame 1",
+			"owner" : "liuxin.li@stonybrook.edu" ,
+			"canvas": [{
+				"container": [{
+					"name": "",
+					"color": "",
+					"font": "",
+					"border": "",
+					"text": "",
+					"width": 200,
+					"height": 200,
+					"posX": 0,
+					"posY": 0,
+					"id": 0
+				}],
+				"label": [{
+					"name": "Label1",
+					"color": "",
+					"font": "12",
+					"border": "",
+					"text": "HI",
+					"width": 50,
+					"height": 10,
+					"posX": 100,
+					"posY": 100,
+					"id": 1
+				}],
+				"label": [{
+					"name": "Label2",
+					"color": "",
+					"font": "12",
+					"border": "",
+					"text": "TESTING",
+					"width": 50,
+					"height": 10,
+					"posX": 100,
+					"posY": 120,
+					"id": 2
+				}]
+			}],
+			"id": 0
+		},
+		{
+			"itemName" : "TestFrame 2",
+			"owner" : "Alex.Li@gmail.com",
+			"canvas": [{
+				"container": [{
+					"name": "",
+					"color": "",
+					"font": "",
+					"border": "",
+					"text": "",
+					"width": 300,
+					"height": 300,
+					"posX": 0,
+					"posY": 0,
+					"id": 0
+				}],
+				"text": [{
+					"name": "Text1",
+					"color": "",
+					"font": "12",
+					"border": "",
+					"text": "SOME TEXT",
+					"width": 50,
+					"height": 10,
+					"posX": 150,
+					"posY": 150,
+					"id": 1
+				}],
+				"textField": [{
+					"name": "TextField",
+					"color": "",
+					"font": "12",
+					"border": "",
+					"text": "ENTER SOMETHING PLS",
+					"width": 50,
+					"height": 10,
+					"posX": 150,
+					"posY": 120,
+					"id": 2
+				}]
+			}],
+			"id": 2
+		}
+	]
+}
