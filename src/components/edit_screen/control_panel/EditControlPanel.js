@@ -4,11 +4,11 @@ class EditControlPanel extends React.Component {
 
     render() {
         return (
-            <div className = "row">Edit Control
-                <div className = "row">Reposition</div>
-                <div className = "row">Resize</div>
-                <div className = "row">Duplicate</div>
-                <div className = "row">Delete</div>
+            <div className = "col container right-align">Edit Control
+                <div className = "btn-large waves-effect waves-light blue"><i className = "material-icons">open_with</i></div>
+                <div className = "btn-large waves-effect waves-light blue"><i className = "material-icons">zoom_out_map</i></div>
+                <div className = "btn-large waves-effect waves-light blue"><i className = "material-icons">content_copy</i></div>
+                <div className = "btn-large waves-effect waves-light blue"><i className = "material-icons">delete</i></div>
             </div>
         );
     }

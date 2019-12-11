@@ -18,7 +18,56 @@ class HomeScreen extends Component {
         fireStore.collection("canvasList").doc(id).set({
             itemName: "",
             owner: this.props.auth.email,
-            canvas: [],
+            canvas: {
+                "container": [{
+                    "name": "",
+                    "color": "",
+                    "font": "",
+                    "border": "",
+                    "text": "",
+                    "width": 0,
+                    "height": 0,
+                    "posX": 0,
+                    "posY": 0,
+                    "id": 0
+                }],
+                "text": [{
+                    "name": "",
+                    "color": "",
+                    "font": "",
+                    "border": "",
+                    "text": "",
+                    "width": 0,
+                    "height": 0,
+                    "posX": 0,
+                    "posY": 0,
+                    "id": 0
+                }],
+                "textfield": [{
+                    "name": "",
+                    "color": "",
+                    "font": "",
+                    "border": "",
+                    "text": "",
+                    "width": 0,
+                    "height": 0,
+                    "posX": 0,
+                    "posY": 0,
+                    "id": 0
+                }],
+                "button": [{
+                    "name": "",
+                    "color": "",
+                    "font": "",
+                    "border": "",
+                    "text": "",
+                    "width": 0,
+                    "height": 0,
+                    "posX": 0,
+                    "posY": 0,
+                    "id": 0
+                }]
+            },
             width: 250,
 			height: 250,
             id: id,
@@ -29,6 +78,9 @@ class HomeScreen extends Component {
         //console.log(this.redirectLink);
     }
     render() {
+        let email = "";
+        if(this.props.auth.email)
+            email = this.props.auth.email;
         if (!this.props.auth.uid) {
             return <Redirect to="/login" />;
         }
@@ -42,7 +94,7 @@ class HomeScreen extends Component {
             <div className="dashboard container">
                 <div className="row">
                     <div className="col s12 m4">
-                        <ItemLinks />
+                        <ItemLinks email = {email}/>
                     </div>
 
                     <div className="col s8">

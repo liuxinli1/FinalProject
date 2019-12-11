@@ -21,10 +21,12 @@ class DatabaseTester extends React.Component {
     handleReset = () => {
         const fireStore = getFirestore();
         canvasJson.itemList.forEach(canvasListJson => {
-            fireStore.collection('canvasList').add({
+            fireStore.collection('canvasList').doc(canvasListJson.id).set({
                     itemName: canvasListJson.itemName,
                     owner: canvasListJson.owner,
                     canvas: canvasListJson.canvas,
+                    width: canvasListJson.width,
+                    height: canvasListJson.height,
                     id: canvasListJson.id
                 }).then(() => {
                     console.log("DATABASE RESET");

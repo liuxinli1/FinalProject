@@ -7,10 +7,11 @@ import ItemCard from './ItemCard.js';
 class ItemLinks extends React.Component {
     render() {
         const canvasList = this.props.canvasList;
+        const email = this.props.email;
         console.log(canvasList);
         return (
             <div className="todo-lists section">
-                {canvasList && canvasList.map(canvas => (
+                {canvasList && canvasList.filter(canvas => canvas.owner == email).map(canvas => (
                     <Link to={'/item/' + canvas.id} key={canvas.id}>
                         <ItemCard canvas={canvas} />
                     </Link>
