@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Redirect } from 'react-router-dom';
 import Canvas from './Canvas.js';
+import AddControlPanel from './control_panel/AddControlPanel.js';
+import EditControlPanel from './control_panel/EditControlPanel.js';
+import ModControlPanel from './control_panel/ModControlPanel.js';
 
 export class EditScreen extends Component {
     state = {
@@ -23,40 +26,37 @@ export class EditScreen extends Component {
         if(this.state.redirectTo)
             return <Redirect to = {this.state.redirectTo}/>
         return (
-            <div classNamr = "col">
                 <div className = "row">
-                    <div className = "col">Resize Canvas</div>
-                    <div className = "col">Zoom In</div>
-                    <div className = "col">Zoom Out</div>
-                    <div className = "col">Save</div>
-                    <div className = "col">Close</div>
-                </div>
-                <div className = "row">
-                    <div className = "col s3 center-align">Add Control
-                        <div className = "row">Container</div>
-                        <div className = "row">Label</div>
-                        <div className = "row">Button</div>
-                        <div className = "row">TextField</div>
+                    <div className = "col s2 left-align">
+                        <div className = "row">
+                            <div className = "btn-small waves-effect waves-light blue"><i className = "material-icons">zoom_in</i></div>
+                            <div className = "btn-small waves-effect waves-light blue"><i className = "material-icons">zoom_out</i></div>
+                            <div className = "btn-small waves-effect waves-light blue"><i className = "material-icons">save</i></div>
+                            <div className = "btn-small waves-effect waves-light blue"><i className = "material-icons">close</i></div>
+                        </div>
+                        <div className = "row container">
+                            <div className = "input-field">
+                                <input className = "validate" id = "widthInput" type = "number" min = "1" max = "5000"/>
+                                <label for = "widthInput">Width</label>
+                            </div>
+                            <div className = "input-field">
+                                <input className = "validate" id = "heightInput"type = "number" min = "1" max = "5000"/>
+                                <label for = "heightInput">Height</label>
+                            </div>
+                            <div className = "btn-small waves-effect waves-light blue">Update Dimension</div>
+                        </div>
+                        <div className = "row container left-align">
+                            <AddControlPanel/>
+                        </div>
                     </div>
-                    <div className = "col s6 center-align">Canvas
+                    <div className = "col s8 center-align">Canvas
                         <Canvas/>
                     </div>
-                    <div className = "col s3 center-align">
-                        <div className = "row">Edit Control
-                            <div className = "row">Reposition</div>
-                            <div className = "row">Resize</div>
-                            <div className = "row">Duplicate</div>
-                            <div className = "row">Delete</div>
-                        </div>
-                        <div className = "row">Mod Control
-                            <div className = "row">Change Text</div>
-                            <div className = "row">Change Font</div>
-                            <div className = "row">Change Color</div>
-                            <div className = "row">Change Border</div>
-                        </div>
+                    <div className = "col s2 center-align">
+                        <EditControlPanel/>
+                        <ModControlPanel/>
                     </div>
                 </div>
-            </div>
         )
     }
 }

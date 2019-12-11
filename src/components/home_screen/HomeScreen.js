@@ -19,6 +19,8 @@ class HomeScreen extends Component {
             itemName: "",
             owner: this.props.auth.email,
             canvas: [],
+            width: 250,
+			height: 250,
             id: id,
         });
         // this.redirectLink = "/todoList/"+id;
