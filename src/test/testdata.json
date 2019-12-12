@@ -85,7 +85,7 @@
 					"posY": 0,
 					"id": 0
 				}],
-				"text": [{
+				"label": [{
 					"name": "Text1",
 					"color": "",
 					"font": "12",
@@ -96,6 +96,18 @@
 					"posX": 150,
 					"posY": 150,
 					"id": 1
+				},
+				{
+					"name": "Text2",
+					"color": "",
+					"font": "12",
+					"border": "",
+					"text": "SOME TEXTHUFIEBIUGS",
+					"width": 50,
+					"height": 10,
+					"posX": 170,
+					"posY": 170,
+					"id": 1	
 				}],
 				"textField": [{
 					"name": "TextField",

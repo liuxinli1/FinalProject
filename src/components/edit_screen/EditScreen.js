@@ -15,7 +15,8 @@ export class EditScreen extends Component {
         redirectTo: '',
         newHeight: 0,
         newWidth: 0,
-        newName: ''
+        newName: '',
+        zoom: 1
     }
     cancelChanges = () =>{
         this.setState({redirectTo: '/'});
@@ -41,6 +42,17 @@ export class EditScreen extends Component {
     }
     changeName = (e) =>{
         this.setState({newName: e.target.value});
+    }
+    updateDimension = () =>{
+        this.canvas.height = this.state.newHeight;
+        this.canvas.width = this.state.newWidth;
+        this.forceUpdate();
+    }
+    zoomIn = () =>{
+        this.setState({zoom: this.state.zoom*2});
+    }
+    zoomOut = () =>{
+        this.setState({zoom: this.state.zoom/2});
     }
     render() {
         if(this.state.redirectTo)
@@ -109,8 +121,8 @@ export class EditScreen extends Component {
                 <div className = "row">
                     <div className = "col s2 left-align">
                         <div className = "row">
-                            <div className = "btn-small waves-effect waves-light blue"><i className = "material-icons">zoom_in</i></div>
-                            <div className = "btn-small waves-effect waves-light blue"><i className = "material-icons">zoom_out</i></div>
+                            <div className = "btn-small waves-effect waves-light blue" onClick = {this.zoomIn}><i className = "material-icons">zoom_in</i></div>
+                            <div className = "btn-small waves-effect waves-light blue" onClick = {this.zoomOut}><i className = "material-icons">zoom_out</i></div>
                             <div className = "btn-small waves-effect waves-light blue" onClick = {this.submitChanges}><i className = "material-icons">save</i></div>
                             <div className = "btn-small waves-effect waves-light blue" onClick = {this.cancelChanges}><i className = "material-icons">close</i></div>
                         </div>
@@ -123,7 +135,7 @@ export class EditScreen extends Component {
                                 <input className = "validate" id = "heightInput"type = "number" min = "1" max = "5000" defaultValue = {this.canvas.height} onChange = {this.changeHeight}/>
                                 <label htmlFor = "heightInput" className = "active">Height</label>
                             </div>
-                            <div className = "btn-small waves-effect waves-light blue">Update Dimension</div>
+                            <div className = "btn-small waves-effect waves-light blue" onClick = {this.updateDimension}>Update Dimension</div>
                         </div>
                         <div className = "row container left-align">
                             <AddControlPanel/>
@@ -131,7 +143,7 @@ export class EditScreen extends Component {
                     </div>
                     <div className = "col s8 center-align">
                         <input className = "center-align" type = "text" defaultValue = {this.canvas.itemName} onChange = {this.changeName}/>
-                        <Canvas canvas = {this.canvas}/>
+                        <Canvas canvas = {this.canvas} zoom = {this.state.zoom}/>
                     </div>
                     <div className = "col s2 container">
                         <EditControlPanel/>
