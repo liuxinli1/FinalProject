@@ -10,7 +10,7 @@ class Button extends React.Component {
                 style = {(this.control) && {
                     height: this.control.height*zoom+"px", 
                     width: this.control.width*zoom+"px",
-                    position: "relative",
+                    position: "absolute",
                     fontSize: this.control.font*zoom,
                     left: this.control.posX*zoom+"px",
                     top: this.control.posY*zoom+"px",

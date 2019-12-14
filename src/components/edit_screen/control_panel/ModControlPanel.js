@@ -17,9 +17,8 @@ class ModControlPanel extends React.Component {
                     <input className = "validate" id = "ChangeBorder" type = "number" min = "1" max = "200"/>
                     <label htmlFor = "ChangeBorder" className = "active">Change Border</label>
                 </div>
-                <div className = "input-field">
-                    <input className = "validate" id = "ChangeColor"/>
-                    <label htmlFor = "ChangeColor" className = "active">Change Border</label>
+                <div>
+                    <input type = "color"/>
                 </div>
             </div>
         );

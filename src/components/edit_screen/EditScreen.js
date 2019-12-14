@@ -16,7 +16,8 @@ export class EditScreen extends Component {
         newHeight: 0,
         newWidth: 0,
         newName: '',
-        zoom: 1
+        zoom: 1,
+        selected: null
     }
     cancelChanges = () =>{
         this.setState({redirectTo: '/'});
@@ -54,69 +55,88 @@ export class EditScreen extends Component {
     zoomOut = () =>{
         this.setState({zoom: this.state.zoom/2});
     }
+    updateState()
+    {
+        // this.canvas.height = this.props.height;
+        // this.canvas.width = this.props.width;
+        // this.canvas.itemName = this.props.itemName;
+        if(!this.state.newHeight)
+            this.setState({newHeight: this.canvas.height});
+        if(!this.state.newWidth)
+            this.setState({newWidth: this.canvas.width});
+        if(!this.state.newName)
+            this.setState({newName: this.canvas.itemName});
+    }
+    refresh = () =>{
+        this.forceUpdate();
+        console.log("refreshed");
+    }
     render() {
         if(this.state.redirectTo)
             return <Redirect to = {this.state.redirectTo}/>
         this.canvas = {
-            "container": [{
-                "name": "",
-                "color": "",
-                "font": "",
-                "border": "",
-                "text": "",
-                "width": 0,
-                "height": 0,
-                "posX": 0,
-                "posY": 0,
-                "id": 0
-            }],
-            "text": [{
-                "name": "",
-                "color": "",
-                "font": "",
-                "border": "",
-                "text": "",
-                "width": 0,
-                "height": 0,
-                "posX": 0,
-                "posY": 0,
-                "id": 0
-            }],
-            "textfield": [{
-                "name": "",
-                "color": "",
-                "font": "",
-                "border": "",
-                "text": "",
-                "width": 0,
-                "height": 0,
-                "posX": 0,
-                "posY": 0,
-                "id": 0
-            }],
-            "button": [{
-                "name": "",
-                "color": "",
-                "font": "",
-                "border": "",
-                "text": "",
-                "width": 0,
-                "height": 0,
-                "posX": 0,
-                "posY": 0,
-                "id": 0
-            }]
+            itemName: "",
+            owner: "",
+            canvas: {
+                "container": [{
+                    "name": "",
+                    "color": "",
+                    "font": "",
+                    "border": "",
+                    "text": "",
+                    "width": 0,
+                    "height": 0,
+                    "posX": 0,
+                    "posY": 0,
+                    "id": 0
+                }],
+                "text": [{
+                    "name": "",
+                    "color": "",
+                    "font": "",
+                    "border": "",
+                    "text": "",
+                    "width": 0,
+                    "height": 0,
+                    "posX": 0,
+                    "posY": 0,
+                    "id": 0
+                }],
+                "textfield": [{
+                    "name": "",
+                    "color": "",
+                    "font": "",
+                    "border": "",
+                    "text": "",
+                    "width": 0,
+                    "height": 0,
+                    "posX": 0,
+                    "posY": 0,
+                    "id": 0
+                }],
+                "button": [{
+                    "name": "",
+                    "color": "",
+                    "font": "",
+                    "border": "",
+                    "text": "",
+                    "width": 0,
+                    "height": 0,
+                    "posX": 0,
+                    "posY": 0,
+                    "id": 0
+                }]
+            },
+            width: 250,
+			height: 250,
         }
-        if(this.props.canvas != undefined){
+        if(this.props.canvas)
+        {
             this.canvas = this.props.canvas;
-            if(!this.state.newHeight)
-                this.setState({newHeight: this.canvas.height});
-            if(!this.state.newWidth)
-                this.setState({newWidth: this.canvas.width});
-            if(!this.state.newName)
-                this.setState({newName: this.canvas.itemName});
+            this.updateState();
         }
-            
+        console.log(this.canvas.height + " height");
+        console.log(this.canvas.width + "width");
         return (
                 <div className = "row">
                     <div className = "col s2 left-align">
@@ -137,8 +157,8 @@ export class EditScreen extends Component {
                             </div>
                             <div className = "btn-small waves-effect waves-light blue" onClick = {this.updateDimension}>Update Dimension</div>
                         </div>
-                        <div className = "row container left-align">
-                            <AddControlPanel/>
+                        <div className = "row container left-align" onClick = {this.refresh}>
+                            <AddControlPanel canvas = {this.canvas}/>
                         </div>
                     </div>
                     <div className = "col s8 center-align">
@@ -146,8 +166,8 @@ export class EditScreen extends Component {
                         <Canvas canvas = {this.canvas} zoom = {this.state.zoom}/>
                     </div>
                     <div className = "col s2 container">
-                        <EditControlPanel/>
-                        <ModControlPanel/>
+                        {/* <EditControlPanel/>
+                        <ModControlPanel/> */}
                     </div>
                 </div>
         )

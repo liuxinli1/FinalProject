@@ -21,7 +21,23 @@ class Canvas extends React.Component {
         }
         return (
             <div className = "canvas_area">
-                <div style = {{width: width+"px", height: height+"px", borderStyle: "solid" ,borderWidth: "2px", margin: "auto"}}>
+                <div style = {{
+                    width: width+"px", 
+                    height: height+"px", 
+                    borderStyle: "solid",
+                    borderWidth: "2px", 
+                    // left: ((zoom >= 1)? 50*zoom+"%" : "0%"), 
+                    // top: ((zoom >= 1)? 50*zoom+"%" : "0%"), 
+                    // left: 50*zoom+"%",
+                    // top: 50*zoom+"%",
+                    // marginLeft: -width/2+"px", 
+                    // marginTop: -height/2+"px", 
+                    // marginLeft: ((zoom <= 1)?-width/2+"px": "0px"),
+                    // marginTop: ((zoom <= 1)?-height/2+"px": "0px"),
+                    margin: "auto",
+                    backgroundColor: "white", 
+                    position: "absolute"
+                    }}>
                     {(obj&&obj.container) && obj.container.map(control => (
                         <Panel control = {control} zoom = {zoom}/>
                     ))}
