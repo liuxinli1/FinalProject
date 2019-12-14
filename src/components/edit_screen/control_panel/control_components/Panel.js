@@ -7,19 +7,18 @@ class Panel extends React.Component {
     setSelected =()=>{
         this.setState({selected: true});
         this.props.selectObj(this.control);
-        console.log("Selected");
+        // console.log("Selected");
     }
     unSelected =()=>{
         this.setState({selected: false});
-        this.props.selectObj(null);
-        console.log("unSelected");
+        // console.log("unSelected");
     }
 
     render() {
         this.control = this.props.control;
         const zoom = this.props.zoom;
         return (
-            <div className = "card" 
+            <div
                 style = {(this.control) && {
                     height: this.control.height*zoom+"px", 
                     width: this.control.width*zoom+"px",
@@ -28,16 +27,21 @@ class Panel extends React.Component {
                     left: this.control.posX*zoom+"px",
                     top: this.control.posY*zoom+"px",
                     margin: "0px 0px 0px 0px",
-                    borderWidth: "1px",
-                    borderStyle: (this.state.selected? "solid" : "none"), }}
+                    borderWidth: this.control.border+"px",
+                    borderRadius: this.control.borderRadius+"px",
+                    borderStyle: (this.state.selected? "dashed" : "solid"),
+                    color: this.control.textColor,
+                    borderColor: this.control.borderColor,
+                    backgroundColor: this.control.bgColor,
+                 }}
                     
-                    tabindex="0"
+                    tabIndex="0"
                     onClick = {this.setSelected}
                     onBlur = {this.unSelected}
                     >
-                <div className = "card-content black-text">
+                {/* <div className = "card-content black-text">
                     {this.control ? this.control.text : "Panel"}
-                </div>
+                </div> */}
             </div>
         );
     }

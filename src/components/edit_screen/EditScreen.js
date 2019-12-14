@@ -69,10 +69,11 @@ export class EditScreen extends Component {
     }
     refresh = () =>{
         this.forceUpdate();
-        console.log("refreshed");
+        // console.log("refreshed");
     }
     setSelected = (obj)=> {
         this.setState({selected: obj});
+        this.forceUpdate();
     }
     render() {
         if(this.state.redirectTo)
@@ -138,8 +139,8 @@ export class EditScreen extends Component {
             this.canvas = this.props.canvas;
             this.updateState();
         }
-        console.log(this.canvas.height + " height");
-        console.log(this.canvas.width + "width");
+        // console.log(this.canvas.height + " height");
+        // console.log(this.canvas.width + "width");
         return (
                 <div className = "row">
                     <div className = "col s2 left-align">
@@ -162,6 +163,7 @@ export class EditScreen extends Component {
                         </div>
                         <div className = "row container left-align" onClick = {this.refresh}>
                             <AddControlPanel canvas = {this.canvas}/>
+                            <EditControlPanel selected = {this.state.selected}/>
                         </div>
                     </div>
                     <div className = "col s8 center-align">
@@ -169,8 +171,7 @@ export class EditScreen extends Component {
                         <Canvas canvas = {this.canvas} zoom = {this.state.zoom} setSelected = {this.setSelected}/>
                     </div>
                     <div className = "col s2 container">
-                        <EditControlPanel selected = {this.state.selected}/>
-                        <ModControlPanel selected = {this.state.selected}/>
+                        <ModControlPanel selected = {this.state.selected} refresh = {this.refresh}/>
                     </div>
                 </div>
         )

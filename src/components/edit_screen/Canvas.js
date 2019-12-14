@@ -24,8 +24,8 @@ class Canvas extends React.Component {
                 <div style = {{
                     width: width+"px", 
                     height: height+"px", 
-                    borderStyle: "solid",
-                    borderWidth: "2px", 
+                    borderStyle: "ridge",
+                    borderWidth: "3px", 
                     // left: ((zoom >= 1)? 50*zoom+"%" : "0%"), 
                     // top: ((zoom >= 1)? 50*zoom+"%" : "0%"), 
                     // left: 50*zoom+"%",

@@ -12,12 +12,16 @@ class AddControlPanel extends React.Component {
             "name": "",
             "color": "",
             "font": "",
-            "border": "",
+            "border": 1,
+			"borderRadius": 0,
             "text": "",
             "width": 100,
             "height": 50,
             "posX": 0,
             "posY": 0,
+            "textColor": "#000000",
+			"borderColor": "#000000",
+			"bgColor": "#ffffff",
             "id": this.obj.container[this.obj.container.length-1] ? this.obj.container[this.obj.container.length-1].id+1 : 0
         };
         this.obj.container.push(newPanel);
@@ -30,12 +34,16 @@ class AddControlPanel extends React.Component {
             "name": "",
             "color": "",
             "font": "12",
-            "border": "",
+            "border": 1,
+			"borderRadius": 0,
             "text": "label",
             "width": 100,
             "height": 50,
             "posX": 0,
             "posY": 0,
+            "textColor": "#000000",
+			"borderColor": "#000000",
+			"bgColor": "#ffffff",
             "id": this.obj.label[this.obj.label.length-1] ? this.obj.label[this.obj.label.length-1].id+1 : 0
         }
         this.obj.label.push(newLabel);
@@ -46,12 +54,16 @@ class AddControlPanel extends React.Component {
             "name": "",
             "color": "",
             "font": "",
-            "border": "",
+            "border": 1,
+			"borderRadius": 0,
             "text": "Button",
             "width": 100,
             "height": 50,
             "posX": 0,
             "posY": 0,
+            "textColor": "#000000",
+			"borderColor": "#000000",
+			"bgColor": "#ffffff",
             "id": this.obj.button[this.obj.button.length-1] ? this.obj.button[this.obj.button.length-1].id+1 : 0
         }
         this.obj.button.push(newButton);
@@ -62,12 +74,16 @@ class AddControlPanel extends React.Component {
             "name": "",
             "color": "",
             "font": "",
-            "border": "",
-            "text": "TexField",
+            "border": 1,
+			"borderRadius": 0,
+            "text": "TextField",
             "width": 100,
             "height": 50,
             "posX": 0,
             "posY": 0,
+            "textColor": "#000000",
+			"borderColor": "#000000",
+			"bgColor": "#ffffff",
             "id": this.obj.textField[this.obj.textField.length-1] ? this.obj.textField[this.obj.textField.length-1].id+1 : 0
         }
         this.obj.textField.push(newTextField);
