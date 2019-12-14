@@ -4,6 +4,7 @@ import Panel from './control_components/Panel.js';
 import Label from './control_components/Label.js';
 import Button from './control_components/Button.js';
 import Textfield from './control_components/Textfield.js';
+import Generic from './control_components/Generic.js';
 
 class AddControlPanel extends React.Component {
     addPanel =()=>{
@@ -80,10 +81,10 @@ class AddControlPanel extends React.Component {
             this.obj = canvas.canvas;
         return (
             <div className = "row center-align">Add Control
-                <div className = "row" onClick = {this.addPanel}><Panel/></div>
-                <div className = "row" onClick = {this.addLabel}><Label/></div>
-                <div className = "row" onClick = {this.addButton}><Button/></div>
-                <div className = "row" onClick = {this.addTextField}><Textfield/></div>
+                <div className = "row" onClick = {this.addPanel}><Generic text = {"Panel"}/></div>
+                <div className = "row" onClick = {this.addLabel}><Generic text = {"Label"}/></div>
+                <div className = "row" onClick = {this.addButton}><Generic text = {"Button"}/></div>
+                <div className = "row" onClick = {this.addTextField}><Generic text = {"TextField"}/></div>
             </div>
         );
     }

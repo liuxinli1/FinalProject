@@ -50,10 +50,10 @@ export class EditScreen extends Component {
         this.forceUpdate();
     }
     zoomIn = () =>{
-        this.setState({zoom: this.state.zoom*2});
+        this.setState({zoom: this.state.zoom*1.5});
     }
     zoomOut = () =>{
-        this.setState({zoom: this.state.zoom/2});
+        this.setState({zoom: this.state.zoom/1.5});
     }
     updateState()
     {
@@ -70,6 +70,9 @@ export class EditScreen extends Component {
     refresh = () =>{
         this.forceUpdate();
         console.log("refreshed");
+    }
+    setSelected = (obj)=> {
+        this.setState({selected: obj});
     }
     render() {
         if(this.state.redirectTo)
@@ -163,11 +166,11 @@ export class EditScreen extends Component {
                     </div>
                     <div className = "col s8 center-align">
                         <input className = "center-align" type = "text" defaultValue = {this.canvas.itemName} onChange = {this.changeName}/>
-                        <Canvas canvas = {this.canvas} zoom = {this.state.zoom}/>
+                        <Canvas canvas = {this.canvas} zoom = {this.state.zoom} setSelected = {this.setSelected}/>
                     </div>
                     <div className = "col s2 container">
-                        {/* <EditControlPanel/>
-                        <ModControlPanel/> */}
+                        <EditControlPanel selected = {this.state.selected}/>
+                        <ModControlPanel selected = {this.state.selected}/>
                     </div>
                 </div>
         )

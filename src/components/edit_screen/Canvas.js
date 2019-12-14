@@ -36,19 +36,19 @@ class Canvas extends React.Component {
                     // marginTop: ((zoom <= 1)?-height/2+"px": "0px"),
                     margin: "auto",
                     backgroundColor: "white", 
-                    position: "absolute"
-                    }}>
+                    position: "absolute"}}
+                    >
                     {(obj&&obj.container) && obj.container.map(control => (
-                        <Panel control = {control} zoom = {zoom}/>
+                        <Panel control = {control} zoom = {zoom} selectObj = {this.props.setSelected}/>
                     ))}
                     {(obj&&obj.label) && obj.label.map(control => (
-                        <Label control = {control} zoom = {zoom}/>
+                        <Label control = {control} zoom = {zoom} selectObj = {this.props.setSelected}/>
                     ))}
                     {(obj&&obj.button) && obj.button.map(control => (
-                        <Button control = {control} zoom = {zoom}/>
+                        <Button control = {control} zoom = {zoom} selectObj = {this.props.setSelected}/>
                     ))}
                     {(obj&&obj.textField) && obj.textField.map(control => (
-                        <Textfield control = {control} zoom = {zoom}/>
+                        <Textfield control = {control} zoom = {zoom} selectObj = {this.props.setSelected}/>
                     ))}
                 </div>
             </div>
