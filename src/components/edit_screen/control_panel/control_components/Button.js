@@ -18,6 +18,51 @@ class Button extends React.Component {
         this.control = this.props.control;
         const zoom = this.props.zoom;
         return (
+            <div>
+                <div style ={(this.control)&&{
+                    height: 10*zoom+"px",
+                    width: 10*zoom+"px",
+                    position: "absolute",
+                    left: (this.control.posX-5)*zoom+"px",
+                    top: (this.control.posY-5)*zoom+"px",
+                    borderRadius: "3px",
+                    borderStyle: "solid",
+                    display: (this.state.selected? "block":"none"),
+                    zIndex: 1,
+                }}></div>
+                <div style ={(this.control)&&{
+                    height: 10*zoom+"px",
+                    width: 10*zoom+"px",
+                    position: "absolute",
+                    left: (this.control.posX+this.control.width-5)*zoom+"px",
+                    top: (this.control.posY-5)*zoom+"px",
+                    borderRadius: "3px",
+                    borderStyle: "solid",
+                    display: (this.state.selected? "block":"none"),
+                    zIndex: 1,
+                }}></div>
+                <div style ={(this.control)&&{
+                    height: 10*zoom+"px",
+                    width: 10*zoom+"px",
+                    position: "absolute",
+                    left: (this.control.posX+this.control.width-5)*zoom+"px",
+                    top: (this.control.posY+this.control.height-5)*zoom+"px",
+                    borderRadius: "3px",
+                    borderStyle: "solid",
+                    display: (this.state.selected? "block":"none"),
+                    zIndex: 1,
+                }}></div>
+                <div style ={(this.control)&&{
+                    height: 10*zoom+"px",
+                    width: 10*zoom+"px",
+                    position: "absolute",
+                    left: (this.control.posX-5)*zoom+"px",
+                    top: (this.control.posY+this.control.height-5)*zoom+"px",
+                    borderRadius: "3px",
+                    borderStyle: "solid",
+                    display: (this.state.selected? "block":"none"),
+                    zIndex: 1,
+                }}></div>
             <input type="button" value={this.control ? this.control.text : "Button"}
                 style = {(this.control) && {
                     height: this.control.height*zoom+"px", 
@@ -27,9 +72,9 @@ class Button extends React.Component {
                     left: this.control.posX*zoom+"px",
                     top: this.control.posY*zoom+"px",
                     margin: "0px 0px 0px 0px",
-                    borderWidth: this.control.border+"px",
-                    borderRadius: this.control.borderRadius+"px",
-                    borderStyle: (this.state.selected? "dashed" : "solid"),
+                    borderWidth: this.control.border*zoom+"px",
+                    borderRadius: this.control.borderRadius*zoom+"px",
+                    borderStyle: "solid",
                     color: this.control.textColor,
                     borderColor: this.control.borderColor,
                     backgroundColor: this.control.bgColor,
@@ -39,6 +84,7 @@ class Button extends React.Component {
                     onClick = {this.setSelected}
                     onBlur = {this.unSelected}>
             </input>
+            </div>
         );
     }
 }

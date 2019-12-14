@@ -28,9 +28,9 @@ class Label extends React.Component {
                     left: this.control.posX*zoom+"px",
                     top: this.control.posY*zoom+"px",
                     margin: "0px 0px 0px 0px",
-                    borderWidth: this.control.border+"px",
-                    borderRadius: this.control.borderRadius+"px",
-                    borderStyle: (this.state.selected? "dashed" : "solid"),
+                    borderWidth: this.control.border*zoom+"px",
+                    borderRadius: this.control.borderRadius*zoom+"px",
+                    borderStyle: "solid",
                     color: this.control.textColor,
                     borderColor: this.control.borderColor,
                     backgroundColor: this.control.bgColor,
@@ -40,7 +40,47 @@ class Label extends React.Component {
                     onClick = {this.setSelected}
                     onBlur = {this.unSelected}
                     >
-            {this.control ? this.control.text : "Label"}
+                    <div style ={(this.control)&&{
+                        height: 10*zoom+"px",
+                        width: 10*zoom+"px",
+                        position: "absolute",
+                        left: -5*zoom+"px",
+                        top: -5*zoom+"px",
+                        borderRadius: "3px",
+                        borderStyle: "solid",
+                        display: (this.state.selected? "block":"none"),
+                    }}></div>
+                    <div style ={(this.control)&&{
+                        height: 10*zoom+"px",
+                        width: 10*zoom+"px",
+                        position: "absolute",
+                        left: (this.control.width-5)*zoom+"px",
+                        top: -5*zoom+"px",
+                        borderRadius: "3px",
+                        borderStyle: "solid",
+                        display: (this.state.selected? "block":"none"),
+                    }}></div>
+                    <div style ={(this.control)&&{
+                        height: 10*zoom+"px",
+                        width: 10*zoom+"px",
+                        position: "absolute",
+                        left: (this.control.width-5)*zoom+"px",
+                        top: (this.control.height-5)*zoom+"px",
+                        borderRadius: "3px",
+                        borderStyle: "solid",
+                        display: (this.state.selected? "block":"none"),
+                    }}></div>
+                    <div style ={(this.control)&&{
+                        height: 10*zoom+"px",
+                        width: 10*zoom+"px",
+                        position: "absolute",
+                        left: -5*zoom+"px",
+                        top: (this.control.height-5)*zoom+"px",
+                        borderRadius: "3px",
+                        borderStyle: "solid",
+                        display: (this.state.selected? "block":"none"),
+                    }}></div>
+                {this.control ? this.control.text : "Label"}
             </div>
         );
     }

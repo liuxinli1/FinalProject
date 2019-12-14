@@ -57,11 +57,11 @@ class ModControlPanel extends React.Component {
         return (
             <div className = "col container center-align">Mod Control
                 <div className = "input-field">
-                    <input className = "validate" id = "ChangeText" value = {selected? selected.text: null} onChange = {this.changeText}/>
+                    <input className = "validate" id = "ChangeText" value = {selected? selected.text: ""} onChange = {this.changeText}/>
                     <label htmlFor = "ChangeText" className = "active">Change Text</label>
                 </div>
                 <div className = "input-field">
-                    <input className = "validate" id = "ChangeFont" type = "number" min = "1" max = "200" value = {selected? selected.font: null} onChange = {this.changeFont}/>
+                    <input className = "validate" id = "ChangeFont" type = "number" min = "1" max = "200" value = {selected? selected.font: 0} onChange = {this.changeFont}/>
                     <label htmlFor = "ChangeFont" className = "active">Change Font</label>
                 </div>
                 <div>
