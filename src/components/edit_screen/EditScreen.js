@@ -85,7 +85,7 @@ export class EditScreen extends Component {
         window.removeEventListener('keydown', this.pressKey, true);
     }
     pressKey =(e)=>{
-        e.preventDefault();
+        // e.preventDefault();
         if(e.keyCode === 46 && this.state.selected){
             console.log("Delete");
             this.canvas.canvas.container = this.canvas.canvas.container.filter(element => element !== this.state.selected);

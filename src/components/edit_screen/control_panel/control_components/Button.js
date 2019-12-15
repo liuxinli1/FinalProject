@@ -48,6 +48,7 @@ class Button extends React.Component {
             e.preventDefault();
             window.addEventListener('mousemove', this.handleMouseMove);
             window.addEventListener('mouseup', this.handleMouseUp);
+            // console.log(this.control);
             this.setState({oldPosX: e.screenX, oldPosY: e.screenY, originalX:this.control.posX, originalY: this.control.posY, oldHeight: this.control.height, oldWidth: this.control.width});
         }
     }
