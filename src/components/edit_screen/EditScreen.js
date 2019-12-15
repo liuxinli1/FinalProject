@@ -37,9 +37,17 @@ export class EditScreen extends Component {
         // this.setState({redirectTo: '/'});
     }
     changeHeight = (e)=>{
+        if(e.target.value > 5000)
+            e.target.value = 5000;
+        if(e.target.value < 1)
+            e.target.value = 1;
         this.setState({newHeight: e.target.value});
     }
     changeWidth = (e)=>{
+        if(e.target.value > 5000)
+            e.target.value = 5000;
+        if(e.target.value < 1)
+            e.target.value = 1;
         this.setState({newWidth: e.target.value});
     }
     changeName = (e) =>{
@@ -85,28 +93,31 @@ export class EditScreen extends Component {
         window.removeEventListener('keydown', this.pressKey, true);
     }
     pressKey =(e)=>{
-        // e.preventDefault();
-        if(e.keyCode === 46 && this.state.selected){
-            console.log("Delete");
-            this.canvas.canvas.container = this.canvas.canvas.container.filter(element => element !== this.state.selected);
-            this.canvas.canvas.button = this.canvas.canvas.button.filter(element => element !== this.state.selected);
-            this.canvas.canvas.label = this.canvas.canvas.label.filter(element => element !== this.state.selected);
-            this.canvas.canvas.TextField = this.canvas.canvas.textField.filter(element => element !== this.state.selected);
-            this.setSelected(null);
-            this.forceUpdate();
-        }
-        if(e.keyCode === 68 && e.ctrlKey && this.state.selected)
+        if(this.state.selected)
         {
-            console.log("Duplicate");
-            let target = this.findControl();
-            console.log(target);
-            let copy = Object.assign({}, this.state.selected)
-            copy.posX += 10;
-            copy.posY += 10;
-            target.push(copy);
-            console.log(target);
-            this.setSelected(copy);
-            this.forceUpdate();
+            if(e.keyCode === 46){
+                console.log("Delete");
+                this.canvas.canvas.container = this.canvas.canvas.container.filter(element => element !== this.state.selected);
+                this.canvas.canvas.button = this.canvas.canvas.button.filter(element => element !== this.state.selected);
+                this.canvas.canvas.label = this.canvas.canvas.label.filter(element => element !== this.state.selected);
+                this.canvas.canvas.TextField = this.canvas.canvas.textField.filter(element => element !== this.state.selected);
+                this.setSelected(null);
+                this.forceUpdate();
+            }
+            if(e.keyCode === 68 && e.ctrlKey)
+            {
+                e.preventDefault();
+                console.log("Duplicate");
+                let target = this.findControl();
+                console.log(target);
+                let copy = Object.assign({}, this.state.selected)
+                copy.posX += 10;
+                copy.posY += 10;
+                target.push(copy);
+                console.log(target);
+                this.setSelected(copy);
+                this.forceUpdate();
+            }
         }
     }
     findControl(){
