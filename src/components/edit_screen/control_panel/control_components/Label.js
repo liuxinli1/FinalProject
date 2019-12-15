@@ -40,47 +40,35 @@ class Label extends React.Component {
                     onClick = {this.setSelected}
                     onBlur = {this.unSelected}
                     >
-                    <div style ={(this.control)&&{
+                    <div className = "drag_button" style ={(this.control)&&{
                         height: 10*zoom+"px",
                         width: 10*zoom+"px",
-                        position: "absolute",
                         left: -5*zoom+"px",
                         top: -5*zoom+"px",
-                        borderRadius: "3px",
-                        borderStyle: "solid",
                         display: (this.state.selected? "block":"none"),
                     }}></div>
-                    <div style ={(this.control)&&{
+                    <div className = "drag_button" style ={(this.control)&&{
                         height: 10*zoom+"px",
                         width: 10*zoom+"px",
-                        position: "absolute",
                         left: (this.control.width-5)*zoom+"px",
                         top: -5*zoom+"px",
-                        borderRadius: "3px",
-                        borderStyle: "solid",
                         display: (this.state.selected? "block":"none"),
                     }}></div>
-                    <div style ={(this.control)&&{
+                    <div className = "drag_button" style ={(this.control)&&{
                         height: 10*zoom+"px",
                         width: 10*zoom+"px",
-                        position: "absolute",
                         left: (this.control.width-5)*zoom+"px",
                         top: (this.control.height-5)*zoom+"px",
-                        borderRadius: "3px",
-                        borderStyle: "solid",
                         display: (this.state.selected? "block":"none"),
                     }}></div>
-                    <div style ={(this.control)&&{
+                    <div className = "drag_button" style ={(this.control)&&{
                         height: 10*zoom+"px",
                         width: 10*zoom+"px",
-                        position: "absolute",
                         left: -5*zoom+"px",
                         top: (this.control.height-5)*zoom+"px",
-                        borderRadius: "3px",
-                        borderStyle: "solid",
                         display: (this.state.selected? "block":"none"),
                     }}></div>
-                {this.control ? this.control.text : "Label"}
+                {this.control.text ? this.control.text : "Label"}
             </div>
         );
     }

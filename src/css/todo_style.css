@@ -40,6 +40,14 @@ div.canvas_area {
   margin-right: auto;
   overflow: auto;
 }
+div.drag_button {
+  background-color: white;
+  position: absolute;
+  border: 1px;
+  border-color: black;
+  border-style: solid;
+  z-index: 1;
+}
 .btn-small {
   height: 24px;
   line-height: 24px;

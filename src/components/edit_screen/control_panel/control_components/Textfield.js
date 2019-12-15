@@ -18,52 +18,7 @@ class Textfield extends React.Component {
         this.control = this.props.control;
         const zoom = this.props.zoom;
         return (
-            <div>
-                <div style ={(this.control)&&{
-                    height: 10*zoom+"px",
-                    width: 10*zoom+"px",
-                    position: "absolute",
-                    left: (this.control.posX-5)*zoom+"px",
-                    top: (this.control.posY-5)*zoom+"px",
-                    borderRadius: "3px",
-                    borderStyle: "solid",
-                    display: (this.state.selected? "block":"none"),
-                    zIndex: 1,
-                }}></div>
-                <div style ={(this.control)&&{
-                    height: 10*zoom+"px",
-                    width: 10*zoom+"px",
-                    position: "absolute",
-                    left: (this.control.posX+this.control.width-5)*zoom+"px",
-                    top: (this.control.posY-5)*zoom+"px",
-                    borderRadius: "3px",
-                    borderStyle: "solid",
-                    display: (this.state.selected? "block":"none"),
-                    zIndex: 1,
-                }}></div>
-                <div style ={(this.control)&&{
-                    height: 10*zoom+"px",
-                    width: 10*zoom+"px",
-                    position: "absolute",
-                    left: (this.control.posX+this.control.width-5)*zoom+"px",
-                    top: (this.control.posY+this.control.height-5)*zoom+"px",
-                    borderRadius: "3px",
-                    borderStyle: "solid",
-                    display: (this.state.selected? "block":"none"),
-                    zIndex: 1,
-                }}></div>
-                <div style ={(this.control)&&{
-                    height: 10*zoom+"px",
-                    width: 10*zoom+"px",
-                    position: "absolute",
-                    left: (this.control.posX-5)*zoom+"px",
-                    top: (this.control.posY+this.control.height-5)*zoom+"px",
-                    borderRadius: "3px",
-                    borderStyle: "solid",
-                    display: (this.state.selected? "block":"none"),
-                    zIndex: 1,
-                }}></div>
-            <input type = "text" value = {this.control ? this.control.text : "TextField"} readOnly
+            <div 
                 style = {(this.control) && {
                     height: this.control.height*zoom+"px", 
                     width: this.control.width*zoom+"px",
@@ -78,13 +33,42 @@ class Textfield extends React.Component {
                     color: this.control.textColor,
                     borderColor: this.control.borderColor,
                     backgroundColor: this.control.bgColor,
+                    textAlign: "left"
                 }}
                     
                     tabIndex="0"
                     onClick = {this.setSelected}
                     onBlur = {this.unSelected}
                     >
-            </input>
+                    <div className = "drag_button" style ={(this.control)&&{
+                        height: 10*zoom+"px",
+                        width: 10*zoom+"px",
+                        left: -5*zoom+"px",
+                        top: -5*zoom+"px",
+                        display: (this.state.selected? "block":"none"),
+                    }}></div>
+                    <div className = "drag_button" style ={(this.control)&&{
+                        height: 10*zoom+"px",
+                        width: 10*zoom+"px",
+                        left: (this.control.width-5)*zoom+"px",
+                        top: -5*zoom+"px",
+                        display: (this.state.selected? "block":"none"),
+                    }}></div>
+                    <div className = "drag_button" style ={(this.control)&&{
+                        height: 10*zoom+"px",
+                        width: 10*zoom+"px",
+                        left: (this.control.width-5)*zoom+"px",
+                        top: (this.control.height-5)*zoom+"px",
+                        display: (this.state.selected? "block":"none"),
+                    }}></div>
+                    <div className = "drag_button" style ={(this.control)&&{
+                        height: 10*zoom+"px",
+                        width: 10*zoom+"px",
+                        left: -5*zoom+"px",
+                        top: (this.control.height-5)*zoom+"px",
+                        display: (this.state.selected? "block":"none"),
+                    }}></div>
+                {this.control.text ? this.control.text : "Textfield"}
             </div>
         );
     }

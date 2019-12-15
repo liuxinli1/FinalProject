@@ -74,6 +74,7 @@ export class EditScreen extends Component {
     setSelected = (obj)=> {
         this.setState({selected: obj});
         this.forceUpdate();
+        //console.log(obj);
     }
     render() {
         if(this.state.redirectTo)
