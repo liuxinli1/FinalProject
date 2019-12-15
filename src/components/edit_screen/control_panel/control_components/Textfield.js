@@ -31,19 +31,23 @@ class Textfield extends React.Component {
     }
     handleMouseMove =(e)=>{
         this.setState({newPosX: e.screenX, newPosY: e.screenY});
-        console.log((this.state.newPosX - this.state.oldPosX));
-        console.log((this.state.newPosY - this.state.oldPosY));
+        // console.log((this.state.newPosX - this.state.oldPosX));
+        // console.log((this.state.newPosY - this.state.oldPosY));
         this.control.posX = this.state.originalX+(this.state.newPosX - this.state.oldPosX);
         this.control.posY = this.state.originalY+(this.state.newPosY - this.state.oldPosY);
     }
     handleMouseUp =(e)=>{
-        console.log("MouseUp");
+        // console.log("MouseUp");
         this.setState({isDragging: false});
         window.removeEventListener('mousemove', this.handleMouseMove);
         window.removeEventListener('mouseup', this.handleMouseUp);
         this.setState({oldPosX:0, newPosY:0});
     }
-
+    // componentDidMount(){
+    //     (this.props.chosenOne && this.props.chosenOne == this.control)?this.setState({selected:true}):this.setState({selected:false})
+    //     // this.forceUpdate();
+    //     // console.log(this.props.chosenOne==this.control);
+    // }
     render() {
         this.control = this.props.control;
         const zoom = this.props.zoom;

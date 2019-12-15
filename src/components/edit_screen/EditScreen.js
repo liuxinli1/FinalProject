@@ -19,9 +19,6 @@ export class EditScreen extends Component {
         zoom: 1,
         selected: null
     }
-    componentDidMount(){
-        this.updateState();
-    }
     cancelChanges = () =>{
         this.setState({redirectTo: '/'});
     }
@@ -79,6 +76,56 @@ export class EditScreen extends Component {
         this.setState({selected: obj});
         this.forceUpdate();
         //console.log(obj);
+    }
+    componentDidMount(){
+        this.updateState();
+        window.addEventListener('keydown', this.pressKey, true);
+    }
+    componentWillUnmount(){
+        window.removeEventListener('keydown', this.pressKey, true);
+    }
+    pressKey =(e)=>{
+        e.preventDefault();
+        if(e.keyCode === 46 && this.state.selected){
+            console.log("Delete");
+            this.canvas.canvas.container = this.canvas.canvas.container.filter(element => element !== this.state.selected);
+            this.canvas.canvas.button = this.canvas.canvas.button.filter(element => element !== this.state.selected);
+            this.canvas.canvas.label = this.canvas.canvas.label.filter(element => element !== this.state.selected);
+            this.canvas.canvas.TextField = this.canvas.canvas.textField.filter(element => element !== this.state.selected);
+            this.setSelected(null);
+            this.forceUpdate();
+        }
+        if(e.keyCode === 68 && e.ctrlKey && this.state.selected)
+        {
+            console.log("Duplicate");
+            let target = this.findControl();
+            console.log(target);
+            let copy = Object.assign({}, this.state.selected)
+            copy.posX += 10;
+            copy.posY += 10;
+            target.push(copy);
+            console.log(target);
+            this.setSelected(copy);
+            this.forceUpdate();
+        }
+    }
+    findControl(){
+        let target = this.canvas.canvas;
+        let result = null;
+        if(target.container.includes(this.state.selected)){
+            result = target.container;
+        }
+        if(target.button.includes(this.state.selected)){
+            result = target.button;
+        }
+        if(target.label.includes(this.state.selected)){
+            result = target.label;
+        }
+        if(target.textField.includes(this.state.selected)){
+            result = target.textField;
+        }
+        // console.log(result);
+        return result;
     }
     render() {
         if(this.state.redirectTo)
@@ -182,12 +229,12 @@ export class EditScreen extends Component {
                         </div>
                         <div className = "row container left-align" onClick = {this.refresh}>
                             <AddControlPanel canvas = {this.canvas}/>
-                            <EditControlPanel selected = {this.state.selected}/>
+                            {/* <EditControlPanel selected = {this.state.selected}/> */}
                         </div>
                     </div>
                     <div className = "col s8 center-align">
                         <input className = "center-align" type = "text" defaultValue = {this.canvas.itemName} onChange = {this.changeName}/>
-                        <Canvas canvas = {this.canvas} zoom = {this.state.zoom} setSelected = {this.setSelected}/>
+                        <Canvas canvas = {this.canvas} zoom = {this.state.zoom} setSelected = {this.setSelected} chosenOne = {this.state.selected}/>
                     </div>
                     <div className = "col s2 container">
                         <ModControlPanel selected = {this.state.selected} refresh = {this.refresh}/>

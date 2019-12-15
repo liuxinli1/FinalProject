@@ -39,16 +39,16 @@ class Canvas extends React.Component {
                     position: "absolute"}}
                     >
                     {(obj&&obj.container) && obj.container.map(control => (
-                        <Panel control = {control} zoom = {zoom} selectObj = {this.props.setSelected}/>
+                        <Panel control = {control} zoom = {zoom} selectObj = {this.props.setSelected} chosenOne = {this.props.chosenOne}/>
                     ))}
                     {(obj&&obj.label) && obj.label.map(control => (
-                        <Label control = {control} zoom = {zoom} selectObj = {this.props.setSelected}/>
+                        <Label control = {control} zoom = {zoom} selectObj = {this.props.setSelected} chosenOne = {this.props.chosenOne}/>
                     ))}
                     {(obj&&obj.button) && obj.button.map(control => (
-                        <Button control = {control} zoom = {zoom} selectObj = {this.props.setSelected}/>
+                        <Button control = {control} zoom = {zoom} selectObj = {this.props.setSelected} chosenOne = {this.props.chosenOne}/>
                     ))}
                     {(obj&&obj.textField) && obj.textField.map(control => (
-                        <Textfield control = {control} zoom = {zoom} selectObj = {this.props.setSelected}/>
+                        <Textfield control = {control} zoom = {zoom} selectObj = {this.props.setSelected} chosenOne = {this.props.chosenOne}/>
                     ))}
                 </div>
             </div>

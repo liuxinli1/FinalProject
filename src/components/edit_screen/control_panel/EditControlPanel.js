@@ -2,6 +2,12 @@ import React from 'react';
 
 class EditControlPanel extends React.Component {
 
+    duplicateControl =()=>{
+
+    }
+    deleteControl =()=>{
+        
+    }
     render() {
         return (
             <div className = "row container right-align">Edit Control
