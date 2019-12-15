@@ -2,7 +2,14 @@ import React from 'react';
 
 class Panel extends React.Component {
     state = {
-        selected: false
+        selected: false,
+        isDragging: false,
+        oldPosX:0,
+        oldPosY:0,
+        newPosX:0,
+        newPosY:0,
+        originalX:0,
+        originalY:0,
     }
     setSelected =()=>{
         this.setState({selected: true});
@@ -12,6 +19,29 @@ class Panel extends React.Component {
     unSelected =()=>{
         this.setState({selected: false});
         // console.log("unSelected");
+    }
+    handleMouseDown=(e)=>{
+        if(this.state.selected)
+        {
+            e.preventDefault();
+            window.addEventListener('mousemove', this.handleMouseMove);
+            window.addEventListener('mouseup', this.handleMouseUp);
+            this.setState({oldPosX: e.screenX, oldPosY: e.screenY, isDragging: true, originalX:this.control.posX, originalY: this.control.posY});
+        }
+    }
+    handleMouseMove =(e)=>{
+        this.setState({newPosX: e.screenX, newPosY: e.screenY});
+        console.log((this.state.newPosX - this.state.oldPosX));
+        console.log((this.state.newPosY - this.state.oldPosY));
+        this.control.posX = this.state.originalX+(this.state.newPosX - this.state.oldPosX);
+        this.control.posY = this.state.originalY+(this.state.newPosY - this.state.oldPosY);
+    }
+    handleMouseUp =(e)=>{
+        console.log("MouseUp");
+        this.setState({isDragging: false});
+        window.removeEventListener('mousemove', this.handleMouseMove);
+        window.removeEventListener('mouseup', this.handleMouseUp);
+        this.setState({oldPosX:0, newPosY:0});
     }
 
     render() {
@@ -38,6 +68,8 @@ class Panel extends React.Component {
                     tabIndex="0"
                     onClick = {this.setSelected}
                     onBlur = {this.unSelected}
+                    onMouseDown = {this.handleMouseDown}
+                    draggable={this.state.selected? "true":"false"}
                     >
                     <div className = "drag_button" style ={(this.control)&&{
                         height: 10*zoom+"px",
