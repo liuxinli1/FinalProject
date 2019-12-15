@@ -19,63 +19,85 @@ class HomeScreen extends Component {
             itemName: "",
             owner: this.props.auth.email,
             canvas: {
-                "container": [{
-                    "name": "",
-                    "color": "",
-                    "font": "",
-                    "border": "",
-                    "text": "",
-                    "width": 0,
-                    "height": 0,
-                    "posX": 0,
-                    "posY": 0,
-                    "id": 0
-                }],
-                "text": [{
-                    "name": "",
-                    "color": "",
-                    "font": "",
-                    "border": "",
-                    "text": "",
-                    "width": 0,
-                    "height": 0,
-                    "posX": 0,
-                    "posY": 0,
-                    "id": 0
-                }],
-                "textfield": [{
-                    "name": "",
-                    "color": "",
-                    "font": "",
-                    "border": "",
-                    "text": "",
-                    "width": 0,
-                    "height": 0,
-                    "posX": 0,
-                    "posY": 0,
-                    "id": 0
-                }],
-                "button": [{
-                    "name": "",
-                    "color": "",
-                    "font": "",
-                    "border": "",
-                    "text": "",
-                    "width": 0,
-                    "height": 0,
-                    "posX": 0,
-                    "posY": 0,
-                    "id": 0
-                }]
+                "container": [
+                    // {
+                    // "name": "",
+                    // "font": 0,
+                    // "border": 1,
+                    // "text": "",
+                    // "width": 0,
+                    // "height": 0,
+                    // "posX": 0,
+                    // "posY": 0,
+                    // "textColor": "#000000",
+					// "borderColor": "#000000",
+					// "bgColor": "#ffffff",
+                    // "id": 0
+                    // }
+                ],
+                "label": [
+                    // {
+                    // "name": "",
+                    // "font": 12,
+                    // "border": 1,
+                    // "borderRadius": 0,
+                    // "text": "",
+                    // "width": 0,
+                    // "height": 0,
+                    // "posX": 0,
+                    // "posY": 0,
+                    // "textColor": "#000000",
+					// "borderColor": "#000000",
+					// "bgColor": "#ffffff",
+                    // "id": 0
+                    // }
+                ],
+                "textField": [
+                    // {
+                    // "name": "",
+                    // "font": 12,
+                    // "border": 1,
+                    // "borderRadius": 0,
+                    // "text": "",
+                    // "width": 0,
+                    // "height": 0,
+                    // "posX": 0,
+                    // "posY": 0,
+                    // "textColor": "#000000",
+					// "borderColor": "#000000",
+					// "bgColor": "#ffffff",
+                    // "id": 0
+                    // }
+                ],
+                "button": [
+                    // {
+                    // "name": "",
+                    // "font": 12,
+                    // "border": 1,
+                    // "borderRadius": 0,
+                    // "text": "",
+                    // "width": 0,
+                    // "height": 0,
+                    // "posX": 0,
+                    // "posY": 0,
+                    // "textColor": "#000000",
+					// "borderColor": "#000000",
+					// "bgColor": "#ffffff",
+                    // "id": 0
+                    // }
+                ]
             },
             width: 250,
 			height: 250,
             id: id,
+            timestamp: firestore.FieldValue.serverTimestamp()
         });
         // this.redirectLink = "/todoList/"+id;
         // this.setState({redirect: true});
         //console.log(id)
         //console.log(this.redirectLink);
+        // let time = firestore.FieldValue.serverTimestamp()
+        // console.log(time);
     }
     render() {
         let email = "";
@@ -124,6 +146,6 @@ const mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-      { collection: 'canvasList', orderBy: ['itemName']},
+      { collection: 'canvasList', orderBy: ['timestamp', 'desc']},
     ]),
 )(HomeScreen);

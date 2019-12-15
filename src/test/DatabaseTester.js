@@ -27,7 +27,8 @@ class DatabaseTester extends React.Component {
                     canvas: canvasListJson.canvas,
                     width: canvasListJson.width,
                     height: canvasListJson.height,
-                    id: canvasListJson.id
+                    id: canvasListJson.id,
+                    timestamp: canvasListJson.timestamp
                 }).then(() => {
                     console.log("DATABASE RESET");
                 }).catch((err) => {

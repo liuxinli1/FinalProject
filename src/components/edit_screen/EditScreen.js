@@ -19,6 +19,9 @@ export class EditScreen extends Component {
         zoom: 1,
         selected: null
     }
+    componentDidMount(){
+        this.updateState();
+    }
     cancelChanges = () =>{
         this.setState({redirectTo: '/'});
     }
@@ -32,8 +35,9 @@ export class EditScreen extends Component {
             itemName: this.state.newName,
             width: this.state.newWidth,
             height: this.state.newHeight,
+            timestamp: firestore.FieldValue.serverTimestamp()
         });
-        this.setState({redirectTo: '/'});
+        // this.setState({redirectTo: '/'});
     }
     changeHeight = (e)=>{
         this.setState({newHeight: e.target.value});
@@ -85,50 +89,61 @@ export class EditScreen extends Component {
             canvas: {
                 "container": [{
                     "name": "",
-                    "color": "",
-                    "font": "",
-                    "border": "",
+                    "font": 0,
+                    "border": 1,
                     "text": "",
                     "width": 0,
                     "height": 0,
                     "posX": 0,
                     "posY": 0,
+                    "textColor": "#000000",
+					"borderColor": "#000000",
+					"bgColor": "#ffffff",
                     "id": 0
                 }],
-                "text": [{
+                "label": [{
                     "name": "",
-                    "color": "",
-                    "font": "",
-                    "border": "",
+                    "font": 12,
+                    "border": 1,
+                    "borderRadius": 0,
                     "text": "",
                     "width": 0,
                     "height": 0,
                     "posX": 0,
                     "posY": 0,
+                    "textColor": "#000000",
+					"borderColor": "#000000",
+					"bgColor": "#ffffff",
                     "id": 0
                 }],
-                "textfield": [{
+                "textField": [{
                     "name": "",
-                    "color": "",
-                    "font": "",
-                    "border": "",
+                    "font": 12,
+                    "border": 1,
+                    "borderRadius": 0,
                     "text": "",
                     "width": 0,
                     "height": 0,
                     "posX": 0,
                     "posY": 0,
+                    "textColor": "#000000",
+					"borderColor": "#000000",
+					"bgColor": "#ffffff",
                     "id": 0
                 }],
                 "button": [{
                     "name": "",
-                    "color": "",
-                    "font": "",
-                    "border": "",
+                    "font": 12,
+                    "border": 1,
+                    "borderRadius": 0,
                     "text": "",
                     "width": 0,
                     "height": 0,
                     "posX": 0,
                     "posY": 0,
+                    "textColor": "#000000",
+					"borderColor": "#000000",
+					"bgColor": "#ffffff",
                     "id": 0
                 }]
             },
@@ -138,7 +153,10 @@ export class EditScreen extends Component {
         if(this.props.canvas)
         {
             this.canvas = this.props.canvas;
-            this.updateState();
+            // this.canvas.height = this.props.canvas.height;
+            // this.canvas.width = this.props.canvas.width;
+            // this.canvas.name = this.props.canvas.name;
+            //this.updateState();
         }
         // console.log(this.canvas.height + " height");
         // console.log(this.canvas.width + "width");

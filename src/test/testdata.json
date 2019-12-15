@@ -54,7 +54,8 @@
 			},
 			"width": 500,
 			"height": 500,
-			"id": "hfrsiueotgns"
+			"id": "hfrsiueotgns",
+			"timestamp": 0
 		},
 		{
 			"itemName" : "TestFrame 2",
@@ -138,7 +139,8 @@
 			},
 			"width": 500,
 			"height": 500,
-			"id": "23rgtsoinafuis"
+			"id": "23rgtsoinafuis",
+			"timestamp": 0
 		}
 	]
 }
